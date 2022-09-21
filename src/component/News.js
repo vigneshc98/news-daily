@@ -22,7 +22,7 @@ const updateNews = async () => {
 
     document.title=`${capitalizeFirstLetter(props.category)}-News Daily`;
     props.setProgress(10);
-    let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=1&pagesize=${props.pageSize}`;
+    let url=`https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=1&pagesize=${props.pageSize}`;
     console.log(url);
     setloading(true);
     props.setProgress(70);
