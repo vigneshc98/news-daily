@@ -22,7 +22,7 @@ const updateNews = async () => {
 
     document.title=`${capitalizeFirstLetter(props.category)}-News Daily`;
     props.setProgress(10);
-    let url=`https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=1&pagesize=${props.pageSize}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=1&pagesize=${props.pageSize}`;
     console.log(url);
     setloading(true);
     props.setProgress(70);
@@ -50,7 +50,12 @@ const updateNews = async () => {
 
         setpage(page+1);
         let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pagesize=${props.pageSize}`;
-        let data=await fetch(url);
+        let data=await fetch(url,{
+            mode: 'cors',
+            headers: {
+              'Access-Control-Allow-Origin':'*'
+            }
+          });
         let parseddata= await data.json();
         console.log(parseddata);
         setarticles(articles.concat(parseddata.articles));
