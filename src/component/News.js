@@ -49,7 +49,7 @@ const updateNews = async () => {
     try {
 
         setpage(page+1);
-        let url=`https://cors-anywhere.herokuapp.com/http://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pagesize=${props.pageSize}`;
+        let url=`http://cors-anywhere.herokuapp.com/http://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pagesize=${props.pageSize}`;
         let data=await fetch(url,{
             mode: 'cors',
             headers: {
